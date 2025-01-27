@@ -1,0 +1,79 @@
+name: Mirror Images to GHCR
+
+on:
+  workflow_dispatch:
+    inputs:
+      images_file:
+        description: 'Path to the YAML file with images'
+        required: true
+        default: 'images.yaml'
+      new_images_file:
+        description: 'Path to the YAML file with new images'
+        required: true
+        default: 'new-images.yaml'
+      images_list_file:
+        description: 'Path to the TXT file with images list'
+        required: true
+        default: 'orig-images.txt'
+      new_images_list_file:
+        description: 'Path to the TXT file with new images list'
+        required: true
+        default: 'new-images.txt'
+
+jobs:
+  mirror-images:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install pyyaml
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set date tag
+      run: echo "DATE_TAG=$(date +'%d-%m-%Y-%H')" >> $GITHUB_ENV
+
+    - name: Process YAML and generate image lists
+      run: |
+        python .github/scripts/process_images.py \
+          ${{ inputs.images_file }} \
+          ${{ inputs.new_images_file }} \
+          "ghcr.io/${{ github.repository }}" \
+          "${{ env.DATE_TAG }}" \
+          "${{ inputs.images_list_file }}" \
+          "${{ inputs.new_images_list_file }}"
+
+    - name: Pull and push images
+      run: |
+        while IFS= read -r old_image && IFS= read -r new_image <&3; do
+          echo "Processing: $old_image -> $new_image"
+          docker pull "$old_image"
+          docker tag "$old_image" "$new_image"
+          docker push "$new_image"
+        done < "${{ inputs.images_list_file }}" 3< "${{ inputs.new_images_list_file }}"
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add \
+          ${{ inputs.new_images_file }} \
+          ${{ inputs.images_list_file }} \
+          ${{ inputs.new_images_list_file }}
+        git commit -m "Update image references for ${{ env.DATE_TAG }}"
+        git push
