@@ -2,52 +2,52 @@ ambassador:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-datawire-ambassador-1-4-2
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 arborist:
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-arborist-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 argo-wrapper:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-argo-wrapper-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 audit:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-audit-service-master
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 aws-es-proxy:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-aws-es-proxy-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 etl:
   image:
     spark:
       pullPolicy: Always
       repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-gen3-spark-master
-      tag: 28-01-2025-16
+      tag: 18-02-2025-18
     tube:
       pullPolicy: Always
       repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-tube-master
-      tag: 28-01-2025-16
+      tag: 18-02-2025-18
 fence:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-fence-master
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 frontend-framework:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-frontend-framework-develop
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 guppy:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-guppy-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 hatchery:
   hatchery:
     containers:
@@ -65,7 +65,7 @@ hatchery:
         FRAME_ANCESTORS: https://{{ .Values.global.hostname }}
       fs-gid: 100
       gen3-volume-location: /home/jovyan/.gen3
-      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-heal-notebooks-combined-tutorials--latest:28-01-2025-16
+      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-heal-notebooks-combined-tutorials--latest:18-02-2025-18
       lifecycle-post-start:
       - /bin/sh
       - -c
@@ -80,61 +80,61 @@ hatchery:
       user-uid: 1000
       user-volume-location: /home/jovyan/pd
     sidecarContainer:
-      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-ecs-ws-sidecar-master:28-01-2025-16
+      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-ecs-ws-sidecar-master:18-02-2025-18
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-hatchery-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 indexd:
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-indexd-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 manifestservice:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-manifestservice-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 metadata:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-metadata-service-feat-es-7
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 peregrine:
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-peregrine-feat-jq-audience
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 pidgin:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-pidgin-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 portal:
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-data-portal-master
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 requestor:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-requestor-master
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 revproxy:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-nginx-stable-perl
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 sheepdog:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-sheepdog-bug-auth-audience
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 sower:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-sower-latest
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
   sowerConfig:
   - action: export
     container:
@@ -177,7 +177,7 @@ sower:
           secretKeyRef:
             key: sheepdog
             name: indexd-service-creds
-      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-pelican-export-gpe-1252:28-01-2025-16
+      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-pelican-export-gpe-1252:18-02-2025-18
       memory-limit: 12Gi
       name: job-task
       pull_policy: Always
@@ -235,7 +235,7 @@ sower:
           secretKeyRef:
             key: sheepdog
             name: indexd-service-creds
-      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-pelican-export-gpe-1252:28-01-2025-16
+      image: ghcr.io/cdnm-registry/containers-quay-io-cdis-pelican-export-gpe-1252:18-02-2025-18
       memory-limit: 12Gi
       name: job-task
       pull_policy: Always
@@ -258,9 +258,9 @@ ssjdispatcher:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-ssjdispatcher-2022-08
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
 wts:
   image:
     pullPolicy: Always
     repository: ghcr.io/cdnm-registry/containers-quay-io-cdis-workspace-token-service-feat-wts-internalfence
-    tag: 28-01-2025-16
+    tag: 18-02-2025-18
