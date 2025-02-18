@@ -48,7 +48,7 @@ frontend-framework:
 guppy:
   image:
     pullPolicy: Always
-    repository: cquay.io/cdis/guppy
+    repository: quay.io/cdis/guppy
     tag: "master"
 hatchery:
   image:
