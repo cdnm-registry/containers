@@ -7,12 +7,12 @@ arborist:
   image:
     pullPolicy: IfNotPresent
     repository: quay.io/cdis/arborist
-    tag: ""
+    tag: "master"
 argo-wrapper:
   image:
     pullPolicy: Always
     repository: quay.io/cdis/argo-wrapper
-    tag: ""
+    tag: "master"
 audit:
   image:
     pullPolicy: Always
@@ -22,7 +22,7 @@ aws-es-proxy:
   image:
     pullPolicy: Always
     repository: quay.io/cdis/aws-es-proxy
-    tag: ""
+    tag: "master"
 etl:
   image:
     tube:
@@ -32,12 +32,14 @@ etl:
     spark:
       pullPolicy: Always
       repository: quay.io/cdis/gen3-spark
-      tag: "master"
+      tag: "2024.11"
 fence:
   image:
     pullPolicy: Always
     repository: quay.io/cdis/fence
     tag: "master"
+  usersync:
+    custom_image: quay.io/cdis/awshelper:master
 frontend-framework:
   image:
     pullPolicy: Always
@@ -46,13 +48,13 @@ frontend-framework:
 guppy:
   image:
     pullPolicy: Always
-    repository: quay.io/cdis/guppy
-    tag: ""
+    repository: cquay.io/cdis/guppy
+    tag: "master"
 hatchery:
   image:
     pullPolicy: IfNotPresent
     repository: quay.io/cdis/hatchery
-    tag: ""
+    tag: "master"
   hatchery:
     containers:
     - args:
@@ -89,12 +91,12 @@ indexd:
   image:
     pullPolicy: IfNotPresent
     repository: quay.io/cdis/indexd
-    tag: ""
+    tag: "master"
 manifestservice:
   image:
     pullPolicy: Always
     repository: quay.io/cdis/manifestservice
-    tag: ""
+    tag: "master"
 metadata:
   image:
     pullPolicy: Always
@@ -109,7 +111,7 @@ pidgin:
     image:
       pullPolicy: Always
       repository: quay.io/cdis/pidgin
-      tag: ""
+      tag: "master"
 portal:
   image:
     pullPolicy: IfNotPresent
@@ -134,7 +136,7 @@ sower:
   image:
     pullPolicy: Always
     repository: quay.io/cdis/sower
-    tag: ""
+    tag: "master"
 
   sowerConfig:
     - name: pelican-export
@@ -260,7 +262,7 @@ ssjdispatcher:
   image:
     pullPolicy: Always
     repository: quay.io/cdis/ssjdispatcher
-    tag: "2022.08"
+    tag: "master"
 wts:
   image:
     pullPolicy: Always
