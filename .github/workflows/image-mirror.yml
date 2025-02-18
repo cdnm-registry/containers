@@ -69,6 +69,7 @@ jobs:
           docker pull "$old_image"
           docker tag "$old_image" "$new_image"
           docker push "$new_image"
+          docker rmi $old_image $new_image
         done < "${{ inputs.images_list_file }}" 3< "${{ inputs.new_images_list_file }}"
 
     - name: Commit and push changes
