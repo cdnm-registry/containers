@@ -24,6 +24,10 @@ jobs:
   mirror-images:
     runs-on: ubuntu-latest
     steps:
+    - name: Free root space
+      uses: almahmoud/free-root-space@main
+      with:
+        verbose: true
     - name: Checkout repository
       uses: actions/checkout@v4
 
